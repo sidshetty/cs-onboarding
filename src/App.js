@@ -76,7 +76,7 @@ function App() {
 
 	return (
 		<div className="container">
-			<img src={logo} className="mx-auto d-block p-3" alt="Eden Logo" />
+			<img src={logo} className="mx-auto d-block p-3 m-5" alt="Eden Logo" />
 			<Step step={step} changeStep={stepHandler} stepWidth={progressWidth} />
 			{displayFormPart}
 			<Form onIncrementByOne={incrementByOne} step={step} userInfo={userInfo} onFormSubmit={formSubmitHandler} />
