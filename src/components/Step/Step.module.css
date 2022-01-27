@@ -39,13 +39,9 @@
 	content: counter(step);
 }
 
-/* .progress-step::after {
-	content: attr(data-title);
-	position: absolute;
-	top: calc(100% + 0.5rem);
-	font-size: 0.85rem;
-	color: #666;
-} */
+.progress-step:hover {
+	cursor: pointer;
+}
 
 .progress-step-active {
 	background-color: #664de5;

@@ -1,24 +1,38 @@
 import React from 'react';
-import Input from '../UI/Input';
+import Button from '../UI/Button';
 const Form = (props) => {
+	const formSubmitHandler = (e) => {
+		e.preventDefault();
+		let userData = {
+			username: 'Sid'
+		};
+		props.onFormSubmit(userData);
+	};
+
 	return (
 		<React.Fragment>
-			<form className="mx-auto p-3 d-grid gap-3">
-				<Input type="text" name="name" label="Full Name" id="name" />
-				<Input type="text" name="username" label="Display Name" id="username" />
+			<form className="mx-auto p-3 d-grid gap-3" onSubmit={formSubmitHandler}>
+				<div classNameName="mb-3 ">
+					<label className="form-label" htmlFor="name">
+						Full Name
+					</label>
+					<input type="text" name="name" className="form-control" id="name" />
+				</div>
+				<div className="mb-3 ">
+					<label className="form-label" for="username">
+						Display Name
+					</label>
+					<input type="text" name="username" className="form-control" id="username" />
+				</div>
+				<div className="mb-3 input-group">
+					<span className="input-group-text">www.eden.com/</span>
+					<input type="text" className="form-control" id="basic-url" />
+				</div>
 
-				<Input type="text" id="basic-url" aria-describedby="basic-addon3">
-					www.eden.com/
-				</Input>
-
-				{props.step === 4 ? (
-					<button type="submit" className="btn btn-primary">
-						Create WorkSpace
-					</button>
+				{props.step === 3 ? (
+					<Button type="submit">Create WorkSpace</Button>
 				) : (
-					<div className="btn btn-primary" onClick={props.onIncrementByOne}>
-						Next
-					</div>
+					<Button onClickHandler={props.onIncrementByOne}>Next</Button>
 				)}
 			</form>
 		</React.Fragment>
