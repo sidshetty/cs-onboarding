@@ -9,16 +9,13 @@ import Welcome from './components/Form/Welcome';
 import Work from './components/Form/Work';
 import Plan from './components/Form/Plan';
 import Congratulations from './components/Form/Congratulations';
-import Modal from './components/UI/Modal';
-import TextBox from './components/UI/TextBox';
-//import Button from './components/UI/Button';
 
 const INITIAL_STATE = +1;
 
 function App() {
 	const [ step, setStep ] = useState(INITIAL_STATE);
 	const [ userInfo, setUserInfo ] = useState({
-		name: 'Red',
+		name: '',
 		username: '',
 		workspaceName: '',
 		workspaceUrl: '',
@@ -36,9 +33,8 @@ function App() {
 		}
 	};
 	const incrementByOne = () => {
-		console.log('increment hua');
 		setStep((prevStep) => {
-			if (prevStep === 3) {
+			if (prevStep === 4) {
 				return 4;
 			} else return prevStep + 1;
 		});
@@ -48,6 +44,7 @@ function App() {
 		setUserInfo((prevUserInfo) => {
 			return { ...prevUserInfo, ...userData };
 		});
+		incrementByOne();
 		console.log(userInfo);
 	};
 
@@ -69,17 +66,9 @@ function App() {
 			break;
 		case 4:
 			progressWidth = 100;
-			displayFormPart = <Congratulations userName={userInfo.username} />;
+			displayFormPart = <Congratulations name={userInfo.name} />;
 			break;
-		case 5:
-			progressWidth = 20;
 
-			displayFormPart = (
-				<Modal onClose={setStep} step={step}>
-					<TextBox title="Please fill in all the details" />
-				</Modal>
-			);
-			break;
 		default:
 			progressWidth = 20;
 			break;
